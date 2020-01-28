@@ -6,6 +6,10 @@ require './lib/deck'
 
 class DeckTest < Minitest::Test
 
+  def test_it_exists
+  end
+
+
   def test_it_has_cards
   end
 
