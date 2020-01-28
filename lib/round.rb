@@ -3,6 +3,7 @@ class Round
   def initialize(deck)
     @deck = deck
     @turns = []
+    # @number_correct = 0
   end
 
   def deck
@@ -10,7 +11,10 @@ class Round
   end
 
   def take_turn(string)
-    Turn.new(string, self.current_card)
+    new_turn = Turn.new(string, self.current_card)
+    @turns << new_turn
+    @deck.cards.rotate!(1)
+    return new_turn
   end
 
   def turns
