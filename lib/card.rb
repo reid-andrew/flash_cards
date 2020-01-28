@@ -15,7 +15,7 @@ class Card
   end
 
   def category
-    @answer
+    @category
   end
 
 end

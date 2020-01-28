@@ -18,4 +18,20 @@ class TurnTest < Minitest::Test
     assert_equal "Juneau", turn.guess
   end
 
+  def test_it_has_a_card
+    skip
+  end
+
+  def test_it_is_correct
+    skip
+  end
+
+  def test_it_is_incorrect
+    skip
+  end
+
+  def test_feedback_is_provided
+    skip
+  end
+
 end
