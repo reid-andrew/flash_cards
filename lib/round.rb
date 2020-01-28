@@ -11,6 +11,7 @@ class Round
 
   def take_turn(string)
     Turn.new(string, self.current_card)
+    # @deck.cards.rotate(1)
   end
 
   def turns
@@ -21,4 +22,12 @@ class Round
     @deck.cards[0]
   end
 
+  # def number_correct
+  #   num_corr = 0
+  #   @turns.each do |turn|
+  #     if turn.correct?
+  #       num_corr += 1
+  #     end
+  #   end
+  # end
 end
