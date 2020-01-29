@@ -12,45 +12,30 @@ class CardTest < Minitest::Test
     assert_instance_of Card, card
   end
 
-  def test_it_has_a_question
+  def test_it_has_questions
     # skip
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    card2 = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
 
     assert_equal "What is the capital of Alaska?", card.question
+    assert_equal "Which planet is closest to the sun?", card2.question
   end
 
-  def test_it_has_another_question
-    # skip
-    card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
-
-    assert_equal "Which planet is closest to the sun?", card.question
-  end
-
-  def test_it_has_an_answer
+  def test_it_has_answers
     # skip
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    card2 = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
 
     assert_equal "Juneau", card.answer
+    assert_equal "Mercury", card2.answer
   end
 
-  def test_it_has_another_answer
-    # skip
-    card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
-
-    assert_equal "Mercury", card.answer
-  end
-
-  def test_it_has_a_category
+  def test_it_has_categories
     # skip
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    card2 = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
 
     assert_equal :Geography, card.category
-  end
-
-  def test_it_has_another_category
-    # skip
-    card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
-
-    assert_equal :STEM, card.category
+    assert_equal :STEM, card2.category
   end
 end
