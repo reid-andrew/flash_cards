@@ -37,20 +37,7 @@ class Round
     @turns.each do |turn|
       turn.card.category == category ? num_test += 1 : num_test += 0
       turn.correct? == true && turn.card.category == category ? num_corr +=1 : num_corr += 0
-      # if turn.card.category == category
-      #   num_test += 1
-      #   if turn.correct?
-      #     num_corr += 1
-      #   end
-      # end
     end
-    if num_test == 0
-      return 0.0
-    else
-      num_corr.to_f / num_test * 100
-    end
+    num_test == 0 ? 0.0 : num_corr.to_f / num_test * 100
   end
-
-
-
 end

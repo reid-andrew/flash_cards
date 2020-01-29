@@ -1,6 +1,6 @@
 class Runner
-  def initialize
-  end
+  # def initialize
+  # end
 
   def start
     card_01 = Card.new("What is the capital of Canada?", "Ottawa", :Geography)
@@ -29,8 +29,8 @@ class Runner
 
     puts "****** Game over! ******"
     puts "You had #{round.number_correct} correct guesses out of #{round.turns.size} for a total score of #{round.percent_correct.round(2)}%."
-    puts "Math Questions - #{round.number_correct_by_category(:Math)}"
-    puts "Geography Questions - #{round.number_correct_by_category(:Geography)}"
+    puts "Math Questions - #{round.percent_correct_by_category(:Math)}%"
+    puts "Geography Questions - #{round.percent_correct_by_category(:Geography)}%"
     puts
     puts
   end
