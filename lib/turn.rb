@@ -6,14 +6,6 @@ class Turn
     @guess = string
   end
 
-  def guess
-    @guess
-  end
-
-  def card
-    @card
-  end
-
   def correct?
     if @guess == card.answer
       true
