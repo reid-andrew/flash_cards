@@ -11,9 +11,7 @@ class Round
     new_turn = Turn.new(string, self.current_card)
     @turns << new_turn
     @deck.cards.rotate!(1)
-    if new_turn.correct?
-      @number_correct += 1
-    end
+    @number_correct += 1 if new_turn.correct?
     return new_turn
   end
 
@@ -28,9 +26,7 @@ class Round
   def number_correct_by_category(category)
     num_corr = 0
     @turns.each do |turn|
-      if turn.correct? && turn.card.category == category
-        num_corr += 1
-      end
+      num_corr += 1 if turn.correct? && turn.card.category == category
     end
     return num_corr
   end
@@ -39,12 +35,14 @@ class Round
     num_test = 0
     num_corr = 0
     @turns.each do |turn|
-      if turn.card.category == category
-        num_test += 1
-        if turn.correct?
-          num_corr += 1
-        end
-      end
+      turn.card.category == category ? num_test += 1 : num_test += 0
+      turn.correct? == true && turn.card.category == category ? num_corr +=1 : num_corr += 0
+      # if turn.card.category == category
+      #   num_test += 1
+      #   if turn.correct?
+      #     num_corr += 1
+      #   end
+      # end
     end
     if num_test == 0
       return 0.0

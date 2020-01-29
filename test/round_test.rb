@@ -64,6 +64,7 @@ class RoundTest < Minitest::Test
     cards = [card_1, card_2, card_3]
     deck = Deck.new(cards)
     round = Round.new(deck)
+    # binding.pry
 
     assert_equal "Juneau", round.current_card.answer
     assert_equal "Juneau", round.take_turn("Juneau").guess
