@@ -4,6 +4,7 @@ require './lib/card'
 require './lib/turn'
 
 class TurnTest < Minitest::Test
+
   def test_it_exists
     #skip
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
@@ -67,5 +68,4 @@ class TurnTest < Minitest::Test
 
     assert_equal "Incorrect.", turn.feedback
   end
-
 end

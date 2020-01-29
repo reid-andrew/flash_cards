@@ -28,7 +28,7 @@ class RoundTest < Minitest::Test
     round = Round.new(deck)
     # binding.pry
 
-    assert  round.deck
+    assert round.deck
   end
 
   def test_it_starts_with_no_turns_taken
