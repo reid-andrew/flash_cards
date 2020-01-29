@@ -212,7 +212,7 @@ class RoundTest < Minitest::Test
     round.take_turn("Venus")
     round.take_turn("North north west")
 
-    assert_equal 2, round.number_correct_by_category(:STEM)
+    assert_equal 1, round.number_correct_by_category(:STEM)
   end
 
   def test_number_correct_by_category_pop_culture
@@ -257,7 +257,7 @@ class RoundTest < Minitest::Test
     round.take_turn("Venus")
     round.take_turn("North north west")
 
-    assert_equal 100.0, round.percent_correct_by_category(:STEM)
+    assert_equal 50.0, round.percent_correct_by_category(:STEM)
   end
 
   def test_percent_correct_by_category_pop_culture

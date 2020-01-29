@@ -46,7 +46,11 @@ class Round
         end
       end
     end
-    num_corr.to_f / num_test * 100
+    if num_test == 0
+      return 0.0
+    else
+      num_corr.to_f / num_test * 100
+    end
   end
 
 
