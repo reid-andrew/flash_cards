@@ -32,6 +32,7 @@ class Round
         @num_corr += 1
       end
     end
+    return @num_corr
   end
 
   def percent_correct_by_category(category)
