@@ -26,15 +26,29 @@ class Round
   end
 
   def number_correct_by_category(category)
-    @num_corr = 0
+    num_corr = 0
     @turns.each do |turn|
       if turn.correct? && turn.card.category == category
-        @num_corr += 1
+        num_corr += 1
       end
     end
-    return @num_corr
+    return num_corr
   end
 
   def percent_correct_by_category(category)
+    num_test = 0
+    num_corr = 0
+    @turns.each do |turn|
+      if turn.card.category == category
+        num_test += 1
+        if turn.correct?
+          num_corr += 1
+        end
+      end
+    end
+    num_corr.to_f / num_test * 100
   end
+
+
+
 end
