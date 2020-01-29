@@ -45,7 +45,19 @@ class TurnTest < Minitest::Test
   end
 
   def test_feedback_is_provided
-    skip
+    # skip
+    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    turn = Turn.new("Juneau", card)
+
+    assert_equal "Correct!", turn.feedback
+  end
+
+  def test_negative_feedback_is_provided
+    # skip
+    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    turn = Turn.new("Homer", card)
+
+    assert_equal "Incorrect.", turn.feedback
   end
 
 end
