@@ -12,26 +12,20 @@ class Runner
     deck = Deck.new(cards)
     round = Round.new(deck)
 
-    puts
-    puts
-    puts "Welcome! You're playing with #{deck.count} cards."
+    puts "\n"+ "\n"+ "Welcome! You're playing with #{deck.count} cards."
     puts "-------------------------------------------------"
 
     while round.turns.size < deck.count do
-      puts "This is card number #{round.turns.size + 1} out of #{deck.count} cards."
-      puts
+      puts "This is card number #{round.turns.size + 1} out of #{deck.count} cards." + "\n"
       puts "Question: #{round.current_card.question}"
       user_input = gets.chomp
       answered_question = round.take_turn(user_input)
-      puts answered_question.feedback
-      puts
+      puts answered_question.feedback + "\n" + "\n"
     end
 
     puts "****** Game over! ******"
     puts "You had #{round.number_correct} correct guesses out of #{round.turns.size} for a total score of #{round.percent_correct.round(2)}%."
     puts "Math Questions - #{round.percent_correct_by_category(:Math)}"
-    puts "Geography Questions - #{round.percent_correct_by_category(:Geography)}%"
-    puts
-    puts
+    puts "Geography Questions - #{round.percent_correct_by_category(:Geography)}%" + "\n" + "\n" + "\n"
   end
 end
