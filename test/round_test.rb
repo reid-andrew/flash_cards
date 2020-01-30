@@ -55,8 +55,15 @@ class RoundTest < Minitest::Test
 
   def test_turns_are_tracked
     # skip
-    @round.take_turn("Juneau")
-    refute_equal [], @round.turns
+    taken_turn = @round.take_turn("Juneau")
+    assert_equal [taken_turn], @round.turns
+  end
+
+  def test_multiple_turns_are_tracked
+    # skip
+    taken_turn1 = @round.take_turn("Juneau")
+    taken_turn2 = @round.take_turn("Mars")
+    assert_equal [taken_turn1, taken_turn2], @round.turns
   end
 
   def test_number_correct_is_counted
