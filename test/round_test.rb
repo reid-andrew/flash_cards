@@ -87,42 +87,41 @@ class RoundTest < Minitest::Test
 
   def test_incorrect_answer_doesnt_increment_number_correct
     # skip
-    @round.take_turn("Juneau")
-    @round.take_turn("Venus")
-
+    @round.take_turn("Juneau") #Provide correct answer to question 1
+    @round.take_turn("Venus")  #Provide incorrect answer to question 2
     assert_equal 1, @round.number_correct
   end
 
   def test_number_correct
     # skip
-    @round.take_turn("Juneau")
-    @round.take_turn("Venus")
+    @round.take_turn("Juneau") #Provide correct answer to question 1
+    @round.take_turn("Venus")  #Provide incorrect answer to question 2
     assert_equal 1, @round.number_correct
   end
 
   def test_percent_correct
     # skip
-    @round.take_turn("Juneau")
-    @round.take_turn("Venus")
+    @round.take_turn("Juneau") #Provide correct answer to question 1
+    @round.take_turn("Venus")  #Provide incorrect answer to question 2
     assert_equal 50.0, @round.percent_correct
   end
 
   def test_number_correct_by_categories
     # skip
-    @round.take_turn("Juneau")
-    @round.take_turn("Venus")
-    @round.take_turn("North north west")
+    @round.take_turn("Juneau") #Provide correct answer to question 1
+    @round.take_turn("Venus")  #Provide incorrect answer to question 2
+    @round.take_turn("North north west") #Provide correct answer to question 3
 
-    assert_equal 1, @round.number_correct_by_category(:STEM)
+    assert_equal 1, @round.number_correct_by_category(:Geography)
     assert_equal 1, @round.number_correct_by_category(:STEM)
     assert_equal 0, @round.number_correct_by_category("Pop Culture")
   end
 
   def test_percent_correct_by_categories
     # skip
-    @round.take_turn("Juneau")
-    @round.take_turn("Venus")
-    @round.take_turn("North north west")
+    @round.take_turn("Juneau") #Provide correct answer to question 1
+    @round.take_turn("Venus")  #Provide incorrect answer to question 2
+    @round.take_turn("North north west") #Provide correct answer to question 3
 
     assert_equal 100.0, @round.percent_correct_by_category(:Geography)
     assert_equal 50.0, @round.percent_correct_by_category(:STEM)
