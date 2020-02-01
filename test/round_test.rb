@@ -14,7 +14,6 @@ class RoundTest < Minitest::Test
     @cards = [@card_1, @card_2, @card_3]
     @deck = Deck.new(@cards)
     @round = Round.new(@deck)
-    # require "pry"; binding.pry
   end
 
   def test_it_exists
@@ -95,30 +94,30 @@ class RoundTest < Minitest::Test
 
   def test_incorrect_answer_doesnt_increment_number_correct
     # skip
-    @round.take_turn("Juneau") #Provide correct answer to question 1
-    @round.take_turn("Venus")  #Provide incorrect answer to question 2
+    @round.take_turn("Juneau")
+    @round.take_turn("Venus")
     assert_equal 1, @round.number_correct
   end
 
   def test_number_correct
     # skip
-    @round.take_turn("Juneau") #Provide correct answer to question 1
-    @round.take_turn("Venus")  #Provide incorrect answer to question 2
+    @round.take_turn("Juneau")
+    @round.take_turn("Venus")
     assert_equal 1, @round.number_correct
   end
 
   def test_percent_correct
     # skip
-    @round.take_turn("Juneau") #Provide correct answer to question 1
-    @round.take_turn("Venus")  #Provide incorrect answer to question 2
+    @round.take_turn("Juneau")
+    @round.take_turn("Venus")
     assert_equal 50.0, @round.percent_correct
   end
 
   def test_number_correct_by_categories
     # skip
-    @round.take_turn("Juneau") #Provide correct answer to question 1
-    @round.take_turn("Venus")  #Provide incorrect answer to question 2
-    @round.take_turn("North north west") #Provide correct answer to question 3
+    @round.take_turn("Juneau")
+    @round.take_turn("Venus")
+    @round.take_turn("North north west")
 
     assert_equal 1, @round.number_correct_by_category(:Geography)
     assert_equal 1, @round.number_correct_by_category(:STEM)
@@ -127,9 +126,9 @@ class RoundTest < Minitest::Test
 
   def test_percent_correct_by_categories
     # skip
-    @round.take_turn("Juneau") #Provide correct answer to question 1
-    @round.take_turn("Venus")  #Provide incorrect answer to question 2
-    @round.take_turn("North north west") #Provide correct answer to question 3
+    @round.take_turn("Juneau")
+    @round.take_turn("Venus")
+    @round.take_turn("North north west")
 
     assert_equal 100.0, @round.percent_correct_by_category(:Geography)
     assert_equal 50.0, @round.percent_correct_by_category(:STEM)
