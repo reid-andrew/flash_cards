@@ -9,7 +9,6 @@ class CardTest < Minitest::Test
     @card2 = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
   end
 
-
   def test_it_exists
     # skip
     assert_instance_of Card, @card
