@@ -20,7 +20,7 @@ class Round
   end
 
   def percent_correct
-    @number_correct.to_f / @turns.count * 100
+    (@number_correct.to_f / @turns.count * 100).round(2)
   end
 
   def number_correct_by_category(category)
@@ -37,7 +37,7 @@ class Round
     if @total_turns_by_category.size == 0
       0.0
     else
-      number_correct_by_category(category) / @total_turns_by_category.size.to_f * 100.0
+      (number_correct_by_category(category) / @total_turns_by_category.size.to_f * 100.0).round(2)
     end
   end
 end
