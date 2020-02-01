@@ -15,22 +15,18 @@ class DeckTest < Minitest::Test
   end
 
   def test_it_exists
-    # skip
     assert_instance_of Deck, @deck
   end
 
   def test_it_has_cards
-    # skip
     assert_equal [@card_1, @card_2, @card_3], @deck.cards
   end
 
   def test_it_has_a_count
-      # skip
     assert_equal 3, @deck.count
   end
 
   def test_it_has_cards_in_categories
-    # skip
     assert_equal [@card_1], @deck.cards_in_category(:Geography)
     assert_equal 1, @deck.cards_in_category(:Geography).size
     assert_equal [@card_2, @card_3], @deck.cards_in_category(:STEM)
