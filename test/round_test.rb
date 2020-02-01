@@ -14,6 +14,7 @@ class RoundTest < Minitest::Test
     @cards = [@card_1, @card_2, @card_3]
     @deck = Deck.new(@cards)
     @round = Round.new(@deck)
+    # require "pry"; binding.pry
   end
 
   def test_it_exists

@@ -8,7 +8,7 @@ class Round
   end
 
   def take_turn(string)
-    new_turn = Turn.new(string, self.current_card)
+    new_turn = Turn.new(string, current_card)
     @turns << new_turn
     @deck.cards.rotate!(1)
     @number_correct += 1 if new_turn.correct?
@@ -24,24 +24,36 @@ class Round
   end
 
   def number_correct_by_category(category)
-    num_corr = 0
-    @turns.each do |turn|
-      num_corr += 1 if turn.correct? && turn.card.category == category
+    @correct_turns = @turns.select do |turn|
+      turn.correct? && turn.card.category == category
     end
-    return num_corr
+    @correct_turns.size
   end
 
   def percent_correct_by_category(category)
-    num_test = 0
-    num_corr = 0
-    @turns.each do |turn|
-      if turn.card.category == category
-        num_test += 1
-        if turn.correct?
-          num_corr += 1
-        end
-      end
+  #   num_test = 0
+  #   num_corr = 0
+  #   @turns.each do |turn|
+  #     if turn.card.category == category
+  #       num_test += 1
+  #       if turn.correct?
+  #         num_corr += 1
+  #       end
+  #     end
+  #   end
+  #   num_test == 0 ? 0.0 : num_corr.to_f / num_test * 100
+    @total_turns_by_category = @turns.select do |turn|
+      turn.card.category == category
     end
-    num_test == 0 ? 0.0 : num_corr.to_f / num_test * 100
+    if @total_turns_by_category.size == 0
+      0.0
+    else
+      number_correct_by_category(category) / @total_turns_by_category.size.to_f * 100.0
+    end
   end
 end
+
+
+
+
+# @turns.select { |turn| turn.card.category == category}
