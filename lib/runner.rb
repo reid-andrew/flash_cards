@@ -11,7 +11,7 @@ class Runner
     cards = [card_01, card_02, card_03, card_04, card_05, card_06]
     deck = Deck.new(cards)
     round = Round.new(deck)
-    
+
     card_categories = []
     cards.each {|card| card_categories << card.category}
     unique_card_categories = card_categories.uniq
@@ -29,7 +29,7 @@ class Runner
     end
 
     puts "****** Game over! ******"
-    puts "You had #{round.number_correct} correct guesses out of #{round.turns.size} for a total score of #{round.percent_correct.round(2)}%."
+    puts "You had #{round.number_correct} correct guesses out of #{round.turns.size} for a total score of #{round.percent_correct}%."
     unique_card_categories.each do |unique_category|
       puts "#{unique_category} Questions - #{round.percent_correct_by_category(unique_category)}%"
     end
