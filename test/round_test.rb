@@ -29,76 +29,64 @@ class RoundTest < Minitest::Test
   end
 
   def test_it_has_a_current_card
-    assert_equal "Juneau", @round.current_card.answer
+    assert_equal @card_1, @round.current_card
   end
 
-  def test_it_takes_a_turn
-    assert_equal "Juneau", @round.current_card.answer
-    assert_equal "Juneau", @round.take_turn("Juneau").guess
-    assert_equal "Mars", @round.current_card.answer
+  def test_it_takes_turns
+    taken_turn = @round.take_turn("Juneau")
+    assert_equal "Juneau", taken_turn.guess
+    assert_equal 1, @round.turns.size
+    assert_equal [taken_turn], @round.turns
+
+    taken_turn_two = @round.take_turn("Pluto")
+    assert_equal "Pluto", taken_turn_two.guess
+    assert_equal 2, @round.turns.size
+    assert_equal [taken_turn, taken_turn_two], @round.turns
   end
 
   def test_turn_is_a_class
     assert_equal Turn, @round.take_turn("Juneau").class
+    assert_equal Turn, @round.take_turn("Pluto").class
   end
 
-  def test_turn_is_correct
+  def test_current_card_updates_when_turn_taken
+    assert_equal @card_1, @round.current_card
+    @round.take_turn("Juneau")
+    assert_equal @card_2, @round.current_card
+    @round.take_turn("Pluto")
+    assert_equal @card_3, @round.current_card
+  end
+
+  def test_if_turn_is_correct
       assert_equal true, @round.take_turn("Juneau").correct?
+      assert_equal false, @round.take_turn("Pluto").correct?
   end
 
-  def test_turns_are_tracked
-    taken_turn = @round.take_turn("Juneau")
-    assert_equal [taken_turn], @round.turns
+  def test_if_feedback_is_provided
+    assert_equal "Correct!", @round.take_turn("Juneau").feedback
+    assert_equal "Incorrect.", @round.take_turn("Pluto").feedback
   end
 
-  def test_multiple_turns_are_tracked
-    taken_turn1 = @round.take_turn("Juneau")
-    taken_turn2 = @round.take_turn("Mars")
-    assert_equal [taken_turn1, taken_turn2], @round.turns
-  end
-
-  def test_number_correct_is_counted
-    # skip
+  def test_total_number_correct_is_counted_correctly
+    assert_equal 0, @round.number_correct
     @round.take_turn("Juneau")
     assert_equal 1, @round.number_correct
-  end
-
-  def test_current_card_is_updated
-    assert_equal "Juneau", @round.current_card.answer
-    @round.take_turn("Juneau")
-    assert_equal "Mars", @round.current_card.answer
-  end
-
-  def test_two_turns_are_taken
-    @round.take_turn("Juneau")
-    assert_equal "Venus", @round.take_turn("Venus").guess
-    assert_equal 2, @round.turns.size
-  end
-
-  def test_second_answer_gets_negative_feedback
-    @round.take_turn("Juneau")
-    assert_equal "Incorrect.", @round.take_turn("Venus").feedback
-  end
-
-  def test_incorrect_answer_doesnt_increment_number_correct
-    @round.take_turn("Juneau")
-    @round.take_turn("Venus")
+    @round.take_turn("Pluto")
     assert_equal 1, @round.number_correct
+    @round.take_turn("North north west")
+    assert_equal 2, @round.number_correct
   end
 
-  def test_number_correct
+  def test_total_percent_correct_is_calculated_correctly
     @round.take_turn("Juneau")
-    @round.take_turn("Venus")
-    assert_equal 1, @round.number_correct
-  end
-
-  def test_percent_correct
-    @round.take_turn("Juneau")
-    @round.take_turn("Venus")
+    assert_equal 100.0, @round.percent_correct
+    @round.take_turn("Pluto")
     assert_equal 50.0, @round.percent_correct
+    @round.take_turn("North north west")
+    assert_equal 66.67, @round.percent_correct
   end
 
-  def test_number_correct_by_categories
+  def test_number_correct_by_categories_is_correct
     @round.take_turn("Juneau")
     @round.take_turn("Venus")
     @round.take_turn("North north west")
@@ -108,7 +96,7 @@ class RoundTest < Minitest::Test
     assert_equal 0, @round.number_correct_by_category("Pop Culture")
   end
 
-  def test_percent_correct_by_categories
+  def test_percent_correct_by_categories_is_correct
     @round.take_turn("Juneau")
     @round.take_turn("Venus")
     @round.take_turn("North north west")
