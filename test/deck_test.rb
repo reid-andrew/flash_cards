@@ -21,7 +21,7 @@ class DeckTest < Minitest::Test
 
   def test_it_has_cards
     # skip
-    assert @deck.cards
+    assert_equal [@card_1, @card_2, @card_3], @deck.cards
   end
 
   def test_it_has_a_count
@@ -31,9 +31,9 @@ class DeckTest < Minitest::Test
 
   def test_it_has_cards_in_categories
     # skip
-    refute_equal [], @deck.cards_in_category(:Geography)
+    assert_equal [@card_1], @deck.cards_in_category(:Geography)
     assert_equal 1, @deck.cards_in_category(:Geography).size
-    refute_equal [], @deck.cards_in_category(:STEM)
+    assert_equal [@card_2, @card_3], @deck.cards_in_category(:STEM)
     assert_equal 2, @deck.cards_in_category(:STEM).size
     assert_equal [], @deck.cards_in_category("Pop Culture")
     assert_equal 0, @deck.cards_in_category("Pop Culture").size
