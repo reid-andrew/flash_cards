@@ -26,12 +26,12 @@ class TurnTest < Minitest::Test
     assert_equal "Homer", @turn2.guess
   end
 
-  def test_it_is_correct
+  def test_correct_or_incorrect_is_provided
     assert_equal true, @turn.correct?
     assert_equal false, @turn2.correct?
   end
 
-  def test_positive_feedback_is_provided
+  def test_feedback_is_provided
     assert_equal "Correct!", @turn.feedback
     assert_equal "Incorrect.", @turn2.feedback
   end
