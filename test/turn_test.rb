@@ -14,11 +14,13 @@ class TurnTest < Minitest::Test
   def test_it_exists
     #skip
     assert_instance_of Turn, @turn
+    assert_instance_of Turn, @turn2
   end
 
   def test_it_has_a_card
     # skip
     assert_instance_of Card, @turn.card
+    assert_instance_of Card, @turn2.card
   end
 
   def test_it_has_a_guess
@@ -29,8 +31,8 @@ class TurnTest < Minitest::Test
 
   def test_it_is_correct
     # skip
-    assert @turn.correct?
-    refute @turn2.correct?
+    assert_equal true, @turn.correct?
+    assert_equal false, @turn2.correct?
   end
 
   def test_positive_feedback_is_provided
