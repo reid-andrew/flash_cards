@@ -4,7 +4,5 @@ require './lib/turn'
 require './lib/round'
 require './lib/runner'
 
-
-
 runner = Runner.new
 runner.start
